@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Fondos Concursables</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+         h3 {
+            color: #31b0d5;
+            font-weight: 700;
+        }
+
+        h4 {
+            color: #31b0d5;
+            font-weight: 700;
+        }
+        
+        p {
+            color: #4f5858;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        .centered-modal.in {
+            display: flex !important;
+        }
+
+        .centered-modal .modal-dialog {
+            margin: auto;
+        }
+        </style>
+         <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-xs-12">
+                    <img src="ffcc.png" class="img-icon" alt="">
+                </div>
+                <div class="col-lg-10 col-xs-12 header-text">
+                    <h3>Fondos Concursables 2019-2020</h3>
+                    <p>Los Fondos Concursables son un apoyo financiero para proyectos sociales donde puedes participar en forma individual y colectiva, para participar debes cumplir con las bases y requisitos establecidos a continuación.</p>
+                </div>
+            </div>
+            </div>
+              
+              <!-- Modal Code -->
+              <div class="modal fade centered-modal" tabindex="-1" role="dialog" id="myModal">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" style="text-align: center;">Tienes una postulación en borrador </h4>
+                    </div>
+                    <div class="modal-body">
+                      <p style="text-align: center;">¿Deseas continuar?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                      <button type="button" class="btn btn-info"><a href="form.html" style="text-decoration: none; color: #ffffff;">Continuar</a></button>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+      
+    <script>
+         //modal
+        $( document ).ready(function() {
+        $('#myModal').modal('show');
+        });
+    </script>
+    
+</body>
+</html>

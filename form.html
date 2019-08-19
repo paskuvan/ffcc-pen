@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/jquery.rut.chileno.min.js"></script>
+    <title>Fondos Concursables - Pensionado</title>
+</head>
+
+<body>
+    <style>
+        /* Latest compiled and minified CSS included as External Resource*/
+        /* Optional theme */
+        /*@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css');*/
+        
+        body {
+            margin-top: 30px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .pasos-gral p {
+            margin-top: 0px;
+            color: #666;
+        }
+        
+        .pasos-filas {
+            display: table-row;
+        }
+        
+        .pasos {
+            display: table;
+            width: 100%;
+            position: relative;
+            margin: 25px 0 30px 0;
+        }
+        
+        .pasos-gral button[disabled] {
+            /*opacity: 1 !important;
+        filter: alpha(opacity=100) !important;*/
+        }
+        
+        .pasos .btn.disabled,
+        .pasos .btn[disabled],
+        .pasos label[disabled] .btn {
+            opacity: 1 !important;
+            color: #ffffff;
+        }
+
+        .img-icon {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin-left: 60px;
+        }
+        
+        .pasos-filas:before {
+            top: 14px;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 1px;
+            background-color: #31b0d5;
+            z-index: 0;
+            opacity: 0.1;
+        }
+        
+        .pasos-gral {
+            display: table-cell;
+            text-align: center;
+            position: relative;
+        }
+        
+        .btn-circle {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 20px;
+            line-height: 1.428571429;
+            border-radius: 20px;
+        }
+        
+        h3 {
+            color: #31b0d5;
+            font-weight: 700;
+        }
+        
+        p {
+            color: #4f5858;
+            font-size: 15px;
+            font-weight: 300;
+        }
+        
+        .float-right {
+            float: right;
+        }
+        
+        .glyphicon {
+            font-size: 30px;
+            color: #fbb100;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .label {
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .no-bold {
+            font-weight: 400; 
+        }
+        
+        .btn-radio {
+            width: 100%;
+        }
+        
+        .img-radio {
+            opacity: 0.5;
+            margin-bottom: 5px;
+        }
+        
+        .space-20 {
+            margin-top: 20px;
+        }
+        
+        .rut-error {
+            color: #fff;
+            font-weight: bold;
+            background-color: #ff4d4d;
+            padding: 3px 10px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .subtitulo {
+            color: #f9be00;
+        }
+        .glyphicon {
+            color: #31b0d5;
+            font-size: 24px;
+        }
+        
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0;
+            /* <-- Apparently some margin are still there even though it's hidden */
+        }
+        
+        input[type=number] {
+            -moz-appearance: textfield;
+            /* Firefox */
+        }
+
+        .inputfile {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .inputfile + label {
+            font-size: 12px;
+            color: white;
+            background-color: #31b0d5;
+            display: inline-block;
+            font-weight: 400;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        .inputfile:focus + label,
+        .inputfile + label:hover {
+            background-color: #f9be00;
+        }
+
+        .inputfile + label {
+            cursor: pointer; /* "hand" cursor */
+        }
+
+        .inputfile:focus + label {
+            outline: 1px dotted #fb9e00;
+            outline: -webkit-focus-ring-color auto 5px;
+        }
+
+    </style>
+
+    <div class="container">
+            <div class="row">
+                    <div class="col-lg-2 col-xs-12">
+                        <img src="ffcc.png" class="img-icon" alt="">
+                    </div>
+                    <div class="col-lg-10 col-xs-12 header-text">
+                        <h3>Fondos Concursables 2019-2020</h3>
+                        <p>Los Fondos Concursables son un apoyo financiero para proyectos sociales donde puedes participar en forma individual y colectiva, para participar debes cumplir con las bases y requisitos establecidos a continuación.</p>
+                    </div>
+                </div>
+    </div>
+
+    <!--Pasos-->
+    <div class="container">
+
+        <div class="pasos">
+            <div class="pasos-filas setup-panel">
+
+                <div class="pasos-gral col-xs-4">
+                    <a href="#step-1" type="button" class="btn btn-success btn-info btn-circle">1</a>
+                    <p>Seleccione tipo de proyecto</p>
+
+                </div>
+                <div class="pasos-gral col-xs-4">
+                    <a href="#step-2" type="button" class="btn btn-info btn-circle">2</a>
+                    <p>Datos de los postulantes</p>
+                </div>
+                <div class="pasos-gral col-xs-4">
+                    <a href="#step-3" type="button" class="btn btn-info btn-circle">3</a>
+                    <p>Adjuntar la documentación</p>
+                </div>
+            </div>
+        </div>
+
+        <form role="form">
+
+            <div class="panel panel-info setup-content" id="step-1">
+                <div class="panel-heading">
+                    <h3>Seleccione tipo de proyecto</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1" class="no-bold">Categoría</label>
+                        <select class="form-control" id="select1" name="select1">
+                            <option disabled selected>Selecciona</option>
+                            <option value="1">Educación</option>
+                            <option value="2">Salud</option>
+                            <option value="3">Recreación</option>
+                            <option value="4">Transversal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1" class="no-bold">Sub-categoría</label>
+                        <select class="form-control" id="select2" name="select2">
+                            <option value="1">Biblioteca</option>
+                            <option value="1">Sala de computación</option>
+                            <option value="2">Multicancha</option>
+                            <option value="2">Gym</option>
+                            <option value="3">Patio vivo</option>
+                            <option value="3">Sala multiuso</option>
+                            <option value="4">Inciativas sociales de alto impacto</option>
+                            <option value="4">Canal de TV comunal</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-info nextBtn pull-right" type="button">Siguiente</button>
+                </div>
+            </div>
+
+            <div class="panel panel-info setup-content" id="step-2">
+                <div class="panel-heading">
+                    <h3>Datos de los postulantes</h3>
+                </div>
+
+                <div class="panel-body">
+                    <h3 class="subtitulo">Postulante 1</h3>
+                    <div class="form-group">
+                        <label class="control-label no-bold ">Rut</label>
+                        <input maxlength="200" type="text" required="required" class="form-control input_rut" placeholder="Ingresa tu rut sin puntos" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Nombre</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Dirección</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Región</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Comuna</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Teléfono fijo</label>
+                        <input maxlength="200" type="number" required="required" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Teléfono Móvil</label>
+                        <input maxlength="200" type="number" required="required" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Email</label>
+                        <input maxlength="200" type="email" required="required" class="form-control" />
+                    </div>
+                    <!--tooltip-->
+                    <div class="form-group">
+                        <label class="control-label no-bold">Agrupación Beneficiada</label>
+                        <span class="glyphicon glyphicon-info-sign"  rel="txtTooltip" data-toggle="tooltip" data-container: 'body' data-placement="bottom" title="Es la entidad a la cual perteneces y que se verá directamente beneficiada con tu proyecto."" data-original-title="information"></span>
+                        <input maxlength="200" type="text" class="form-control" />
+                        
+                    </div>
+                    
+                    <!--end tooltip-->
+                    <h3 class="subtitulo">Postulante 2</h3>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Rut</label>
+                        <input maxlength="200" type="text" required="required" class="form-control input_rut" placeholder="Ingresa tu rut sin puntos" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label no-bold">Nombre</label>
+                        <input maxlength="200" type="text" required="required" class="form-control" />
+                    </div>
+                    
+
+                    <button class="btn btn-warning backBtn pull-left" type="button">Volver</button>
+                    <button class="btn btn-info nextBtn pull-right" type="button">Siguiente</button>
+                </div>
+            </div>
+
+            <div class="panel panel-info setup-content" id="step-3">
+    
+                <div class="panel-heading">
+                    <h3 >Adjuntar la documentación</h3>
+                </div>
+                <div class="panel-body">
+                        <p>Para terminar el proceso, adjunta los archivos solicitados. Recuerda que estos no pueden ser modificados posterior al envío.</p> <br>
+                    <form>
+                        <div class="form-group">
+                                <p>Nómina de Afiliados que se beneficiarán con el proyecto</p>
+                                <input type="file" name="file" id="file" class="inputfile" />
+                                <label for="file">Adjuntar el archivo</label>
+                                <span class="glyphicon glyphicon-info-sign"  rel="txtTooltip" data-toggle="tooltip" data-container: 'body' data-placement="bottom" title="Excel máx 2 MB" data-original-title="information"></span>
+                            
+                            <input type="file" class="inputfile" id="exampleFormControlFile1">
+                            
+                        </div>
+                        <div class="form-group">
+                                <p>Carta de formalización del proyecto</p>
+                                <input type="file" name="file" id="file" class="inputfile" />
+                                <label for="file">Adjuntar el archivo</label>
+                                <span class="glyphicon glyphicon-info-sign"  rel="txtTooltip" data-toggle="tooltip" data-container: 'body' data-placement="bottom" title="Word o PDF máx 2 MB" data-original-title="information"></span>
+                            <input type="file" class="inputfile" id="exampleFormControlFile1">
+
+                        </div>
+                        <div class="form-group" style="margin: 0px 0 40px 0;">
+                                <p>Copia cédulas de identidad de los postulantes</p>
+                                <input type="file" name="file" id="file" class="inputfile" />
+                                <label for="file">Adjuntar el archivo</label>
+                                <span class="glyphicon glyphicon-info-sign"  rel="txtTooltip" data-toggle="tooltip" data-container: 'body' data-placement="bottom" title="JPG, TIFF, PNG, PDF máx 2 MB" data-original-title="information"></span>
+                            <input type="file" class="inputfile" id="exampleFormControlFile1">
+
+                        </div>
+                      
+                    </form>
+                    <button class="btn btn-warning backBtn pull-left" type="button">Volver</button>
+                    <!-- Trigger the modal with a button -->
+                    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Enviar postulación</button>
+
+                   <!-- Modal Code -->
+              <div class="modal fade centered-modal" tabindex="-1" role="dialog" id="myModal">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h3 class="modal-title" style="text-align: center;">Postulación realizada </h3>
+                        </div>
+                        <div class="modal-body">
+                          <p style="text-align: center;">Se ha ingresado el N° de Solicitud <b>XXXXX</b> en estado: <b>XXXXX</b>. <br> El fin de la evaluación será el mes <b>XXX</b> del año <b>XXXX</b>. <br>
+                            <a href="postulacion.html" style="text-decoration: none; color:#f9be00; font-weight:700;">Ver estado de postulación</a>
+                        </p>
+                         
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                         
+                        </div>
+                      </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                  </div><!-- /.modal -->
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--Fin Pasos-->
+    <script type="text/javascript">
+        //pasos 
+        $(document).ready(function() {
+
+            var navListItems = $('div.setup-panel div a'),
+                allWells = $('.setup-content'),
+                allNextBtn = $('.nextBtn');
+                allBackBtn = $('.backBtn');
+
+            allWells.hide();
+
+            navListItems.click(function(e) {
+                e.preventDefault();
+                var $target = $($(this).attr('href')),
+                    $item = $(this);
+
+                if (!$item.hasClass('disabled')) {
+                    navListItems.removeClass('btn-warning').addClass('btn-default');
+                    $item.addClass('btn-warning');
+                    allWells.hide();
+                    $target.show();
+                    $target.find('input:eq(0)').focus();
+                }
+            });
+
+            allNextBtn.click(function() {
+                var curStep = $(this).closest(".setup-content"),
+                    curStepBtn = curStep.attr("id"),
+                    nextpasos = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                    curInputs = curStep.find("input[type='text'],input[type='url']"),
+                    isValid = true;
+
+                $(".form-group").removeClass("has-error");
+                for (var i = 0; i < curInputs.length; i++) {
+                    if (!curInputs[i].validity.valid) {
+                        isValid = false;
+                        $(curInputs[i]).closest(".form-group").addClass("has-error");
+                    }
+                }
+
+                if (isValid) nextpasos.removeAttr('disabled').trigger('click');
+            });
+
+            allBackBtn.click(function() {
+                var curStep = $(this).closest(".setup-content");
+                var curStepBtn = curStep.attr("id");
+                
+                var currStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().children("a");
+                var prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
+                
+                prevStepWizard.trigger('click');
+                currStepWizard.attr("disabled", "disabled");
+            });
+
+            // los detalles de cada paso
+            $('div.setup-panel div a.btn-warning').trigger('click');
+        });
+
+        $('.check-ok').click(function() {
+            $('.check-ok').not(this).prop('checked', false);
+        });
+
+        $(function() {
+            $('.btn-radio').click(function(e) {
+                $('.btn-radio').not(this).removeClass('active')
+                    .siblings('input').prop('checked', false)
+                    .siblings('.img-radio').css('opacity', '0.2');
+                $(this).addClass('active')
+                    .siblings('input').prop('checked', true)
+                    .siblings('.img-radio').css('opacity', '1');
+            });
+        });
+
+        // validar rut
+        ! function(a) {
+            function b(a, b) {
+                a.closest(".rut-container").append(b)
+            }
+            a.fn.rut = function(c) {
+                var d = a.extend({
+                    error_html: '<span class="rut-error">Rut incorrecto</span>',
+                    formatear: !0,
+                    on: "blur",
+                    required: !0,
+                    placeholder: !0,
+                    fn_error: function(a) {
+                        b(a, d.error_html)
+                    },
+                    fn_validado: function(a) {}
+                }, c);
+                return this.each(function() {
+                    var b = a(this);
+                    b.wrap('<div class="rut-container"></div>'), b.attr("pattern", "[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}").attr("maxlength", 12), d.required && b.attr("required", "required"), d.placeholder && b.attr("placeholder", "12.345.678-5"), d.formatear && b.on("blur", function() {
+                        b.val(a.rut.formatear(b.val()))
+                    }), b.on(d.on, function() {
+                        a(".rut-error").remove(), a.rut.validar(b.val()) && "" != a.trim(b.val()) ? d.fn_validado() : d.fn_error(b)
+                    })
+                })
+            }
+        }(jQuery), jQuery.rut = {
+            validar: function(a) {
+                if (!/[0-9]{1,2}.[0-9]{3}.[0-9]{3}-[0-9Kk]{1}/.test(a)) return !1;
+                var b = a.split("-"),
+                    c = b[1],
+                    a = b[0].split(".").join("");
+                return "K" == c && (c = "k"), $.rut.dv(a) == c
+            },
+            dv: function(a) {
+                for (var b = 0, c = 1; a; a = Math.floor(a / 10)) c = (c + a % 10 * (9 - b++ % 6)) % 11;
+                return c ? c - 1 : "k"
+            },
+            formatear: function(a) {
+                for (var b = this.quitar_formato(a), a = b.substring(0, b.length - 1), c = ""; a.length > 3;) c = "." + a.substr(a.length - 3) + c, a = a.substring(0, a.length - 3);
+                return "" == $.trim(a) ? "" : a + c + "-" + b.charAt(b.length - 1)
+            },
+            quitar_formato: function(a) {
+                return a = a.split("-").join("").split(".").join("")
+            }
+        };
+
+        //mostrar el input rojo
+        jQuery(document).ready(function($) {
+            $('.input_rut').rut();
+        });
+
+        //dependent dropdown
+        var $select1 = $('#select1'),
+            $select2 = $('#select2'),
+            $options = $select2.find('option');
+
+        $select1.on('change', function() {
+            $select2.html($options.filter('[value="' + this.value + '"]'));
+        }).trigger('change');
+
+        //tooltip
+        $(document).ready(function() {
+            $('input[rel="txtTooltip"]').tooltip();
+        });
+    </script>
+
+</body>
+
+</html>

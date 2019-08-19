@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/jquery.rut.chileno.min.js"></script>
+    <title>Fondos Concursables - Pensionado</title>
+</head>
+
+<body>
+    <style>
+        /* Latest compiled and minified CSS included as External Resource*/
+        /* Optional theme */
+        /*@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css');*/
+        
+        body {
+            margin-top: 30px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .img-icon {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin-left: 60px;
+        }
+        
+        .pasos-gral p {
+            margin-top: 0px;
+            color: #666;
+        }
+        
+        .pasos-filas {
+            display: table-row;
+        }
+        
+        .pasos {
+            display: table;
+            width: 100%;
+            position: relative;
+            margin: 25px 0 30px 0;
+        }
+        
+        .pasos-gral button[disabled] {
+            /*opacity: 1 !important;
+        filter: alpha(opacity=100) !important;*/
+        }
+        
+        .pasos .btn.disabled,
+        .pasos .btn[disabled],
+        .pasos label[disabled] .btn {
+            opacity: 1 !important;
+            color: #ffffff;
+        }
+        
+        .pasos-filas:before {
+            top: 14px;
+            bottom: 0;
+            position: absolute;
+            content: " ";
+            width: 100%;
+            height: 1px;
+            background-color: #31b0d5;
+            z-index: 0;
+            opacity: 0.1;
+        }
+        
+        .pasos-gral {
+            display: table-cell;
+            text-align: center;
+            position: relative;
+        }
+        
+        .btn-circle {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 20px;
+            line-height: 1.428571429;
+            border-radius: 20px;
+        }
+        
+        h3 {
+            color: #31b0d5;
+            font-weight: 700;
+        }
+        
+        p {
+            color: #4f5858;
+            font-size: 15px;
+            font-weight: 300;
+        }
+        
+        .float-right {
+            float: right;
+        }
+        
+        .glyphicon {
+            font-size: 30px;
+            color: #fbb100;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .label {
+            margin-bottom: 10px;
+        }
+        
+        .btn-radio {
+            width: 100%;
+        }
+        
+        .img-radio {
+            opacity: 0.5;
+            margin-bottom: 5px;
+        }
+        
+        .space-20 {
+            margin-top: 20px;
+        }
+        
+        .rut-error {
+            color: #fff;
+            font-weight: bold;
+            background-color: #ff4d4d;
+            padding: 3px 10px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        
+        .no-bold {
+          font-weight: 400;
+        }
+        
+        .subtitulo {
+            color: #f9be00;
+        }
+        .glyphicon {
+            color: #31b0d5;
+            font-size: 20px;
+    vertical-align: bottom;
+        }
+        
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0;
+            /* <-- Apparently some margin are still there even though it's hidden */
+        }
+        
+        input[type=number] {
+            -moz-appearance: textfield;
+            /* Firefox */
+        }
+
+        .panel-default>.panel-heading {
+            background-color: #5bc0de;
+            color: #ffffff;
+        }
+
+    </style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-xs-12">
+            <img src="ffcc.png" class="img-icon" alt="">
+        </div>
+        <div class="col-lg-10 col-xs-12 header-text">
+            <h3>Fondos Concursables 2019-2020</h3>
+            <p>Los Fondos Concursables son un apoyo financiero para proyectos sociales donde puedes participar en forma individual y colectiva, para participar debes cumplir con las bases y requisitos establecidos a continuación.</p>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+
+            <div class="panel-group" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="panel-title expand">
+                     <div class="right-arrow pull-right">+</div>
+                    <a href="#" style="text-decoration: none; color: #ffffff;">Características</a>
+                  </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                  <div class="panel-body">Deberá seleccionar uno de los proyectos sociales disponibles que son sin fines de lucro y  estan destinado a satisfacer un estado de necesidad relacionado con Salud, Educación, Cultura, Deportes y Recreación. <br>
+                  Las presentaciones del beneficio, deben otorgarse bajo normas de igualdad y uniformidad, sin que se establezcan diferencias arbitrarias.</div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="panel-title expand">
+                      <div class="right-arrow pull-right">+</div>
+                    <a href="#" style="text-decoration: none; color: #ffffff;">Requisitos</a>
+                  </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                  <div class="panel-body">Todos los participantes deben estar afiliados a Caja Los Andes ya sea en su calidad de afiliado como pensionado.</div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="panel-title expand">
+                      <div class="right-arrow pull-right">+</div>
+                    <a href="#" style="text-decoration: none; color: #ffffff;">Bases</a>
+                  </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">1- Nómina de los afiliados a Caja Los Andes que se beneficiarán del Proyecto: Documento de Tipo Excel que debe contener nombre y Rut de los afiliados beneficiarios del proyecto. Este documento es obligatorio. <br>
+                      <a href="#" download=""><span class="glyphicon glyphicon-download"></span></a> <span>Descarga</span>
+                      </li>
+                      <li class="list-group-item">2- Carta de Formalización del Poryecto: Documento formato PDF, donde todos los afiliados deben poner en conocimiento a la empresa o Institución de la presentación del proyecto al proceso de postulación. Este documento es obligatorio. <br>
+                        <a href="#" download=""><span class="glyphicon glyphicon-download"></span></a> <span>Descarga</span>
+                      </li>
+                      <li class="list-group-item">3- Copia de la Cédula de identidad de los dos postulantes al proyecto, escaneados en formato PDF en una sola hoja. Este documento es obligatorio. <br>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="panel-title expand">
+                         <div class="right-arrow pull-right">+</div>
+                        <a href="#" style="text-decoration: none; color: #ffffff;">Documentación Requerida</a>
+                      </h4>
+                    </div>
+                    <div id="collapse4" class="panel-collapse collapse">
+                      <div class="panel-body">Enviar la documentación obligatoria digitalizada y en los formatos establecidos, NO se aceptarán fotografías de documentos.La información enviada no podrá ser modificada posteriormente y será corroborada por Caja Los Andes, por lo que se recomienda revisar antes de enviar la solicitud de postulación.  
+                      </div>
+                     
+                    </div>
+                  </div>
+            </div>
+            <div class="form-check" style="margin: 0 0 25px 0;">
+                    <input type="checkbox" class="form-check-input" id="condiciones">
+                    <label class="form-check-label no-bold" for="condiciones">Acepta las condiciones las bases de postulación.</label>
+                </div>
+
+                
+                <button class="btn btn-info  pull-right" type="button"><a href="index.html" style="text-decoration: none; color: #ffffff;">Postular</a></button>
+          </div>
+        
+    
+   <script>
+       //collapse
+       $(function() {
+  $(".expand").on( "click", function() {
+    // $(this).next().slideToggle(200);
+    $expand = $(this).find(">:first-child");
+    
+    if($expand.text() == "+") {
+      $expand.text("-");
+    } else {
+      $expand.text("+");
+    }
+  });
+});
+   </script>
+
+</body>
+
+</html>
